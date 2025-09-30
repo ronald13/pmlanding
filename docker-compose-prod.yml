@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "28565:80"
