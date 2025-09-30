@@ -1,0 +1,95 @@
+@import '../../styles/variables';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: $white;
+  border-bottom: 1px solid $border-gray;
+  z-index: 100;
+  padding: 1rem 0;
+
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: $text-dark;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__logo-icon {
+    font-size: 1.5rem;
+  }
+
+  &__logo-text {
+    letter-spacing: -0.02em;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+  }
+
+  &__nav-link {
+    color: $text-gray;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $text-dark;
+    }
+
+    &--active {
+      color: $primary-blue;
+    }
+  }
+
+  &__contact-btn {
+    background: $primary-blue;
+    color: $white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all $transition-fast;
+    box-shadow: $shadow-sm;
+
+    &:hover {
+      background: darken($primary-blue, 8%);
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    &__container {
+      padding: 0 1rem;
+    }
+  }
+}
