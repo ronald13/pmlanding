@@ -69,12 +69,6 @@ const ProjectsCarousel = () => {
           </div>
         </div>
 
-        {/* Progress Indicator */}
-        <div className="projects-carousel__progress">
-          <span className="projects-carousel__progress-text">
-            {currentIndex + 1} - {Math.min(currentIndex + cardsPerView, projectsData.length)} of {projectsData.length}
-          </span>
-        </div>
 
       </div>
     </section>

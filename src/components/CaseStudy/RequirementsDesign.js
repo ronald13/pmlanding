@@ -15,13 +15,34 @@ const RequirementsDesign = ({ data }) => {
 
         {/* Images Grid */}
         <div className="requirements-design__images">
-          {data.images.map((image, index) => (
-            <div key={index} className="requirements-design__image-wrapper">
-              <div className="requirements-design__image-placeholder">
-                <span>Design Document {index + 1}</span>
-              </div>
+          {/* Left Column - 2 images */}
+          <div className="requirements-design__column requirements-design__column--left">
+            <div className="requirements-design__image-wrapper">
+              <img
+                src={data.images[0]}
+                alt={`${data.title} - Design 1`}
+                className="requirements-design__image"
+              />
             </div>
-          ))}
+            <div className="requirements-design__image-wrapper">
+              <img
+                src={data.images[1]}
+                alt={`${data.title} - Design 2`}
+                className="requirements-design__image"
+              />
+            </div>
+          </div>
+
+          {/* Right Column - 1 large image */}
+          <div className="requirements-design__column requirements-design__column--right">
+            <div className="requirements-design__image-wrapper requirements-design__image-wrapper--full">
+              <img
+                src={data.images[2]}
+                alt={`${data.title} - Design 3`}
+                className="requirements-design__image"
+              />
+            </div>
+          </div>
         </div>
 
       </div>

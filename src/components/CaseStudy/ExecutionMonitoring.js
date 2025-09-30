@@ -32,8 +32,9 @@ const ExecutionMonitoring = ({ data }) => {
               <ul className="execution-monitoring__results-list">
                 {data.keyResults.map((result, index) => (
                   <li key={index} className="execution-monitoring__result-item">
-                    <svg className="execution-monitoring__check" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M16.6667 5L7.50004 14.1667L3.33337 10" stroke="#6B7FEE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <svg className="execution-monitoring__check" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19 12C19 13.4776 18.5324 14.9173 17.6642 16.113C16.796 17.3086 15.5717 18.1989 14.1667 18.6562C12.7616 19.1136 11.2479 19.1146 9.84223 18.6591C8.43657 18.2037 7.21109 17.315 6.34129 16.1206C5.47149 14.9261 5.00198 13.487 5.00001 12.0094C4.99803 10.5318 5.46368 9.09141 6.33028 7.8946C7.19688 6.69779 8.41998 5.80591 9.82441 5.34667C11.2289 4.88743 12.7426 4.88439 14.1489 5.33799" stroke="#D4D3F4" strokeWidth="2"/>
+                      <path d="M9 11L12 14L19 7" stroke="#4640DE" strokeWidth="2"/>
                     </svg>
                     {result}
                   </li>
@@ -46,33 +47,37 @@ const ExecutionMonitoring = ({ data }) => {
         {/* Right Slider */}
         <div className="execution-monitoring__slider">
           <div className="execution-monitoring__slider-wrapper">
-            <div className="execution-monitoring__image-placeholder">
-              <span>Monitoring Dashboard {currentImageIndex + 1}</span>
-            </div>
+            <img
+              src={data.images[currentImageIndex]}
+              alt={`${data.title} - Slide ${currentImageIndex + 1}`}
+              className="execution-monitoring__image"
+            />
           </div>
 
           {/* Navigation */}
-          <div className="execution-monitoring__controls">
-            <button
-              className="execution-monitoring__nav-btn execution-monitoring__nav-btn--prev"
-              onClick={handlePrevImage}
-              aria-label="Previous slide"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
+          {data.images.length > 1 && (
+            <div className="execution-monitoring__controls">
+              <button
+                className="execution-monitoring__nav-btn execution-monitoring__nav-btn--prev"
+                onClick={handlePrevImage}
+                aria-label="Previous slide"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
 
-            <button
-              className="execution-monitoring__nav-btn execution-monitoring__nav-btn--next"
-              onClick={handleNextImage}
-              aria-label="Next slide"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-          </div>
+              <button
+                className="execution-monitoring__nav-btn execution-monitoring__nav-btn--next"
+                onClick={handleNextImage}
+                aria-label="Next slide"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
       </div>

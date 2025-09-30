@@ -9,7 +9,6 @@ export const resultsData = {
   ],
   ongoing: 'The project is continuing to scale, with current focus areas including advanced predictive HR analytics and full integration with financial systems to drive smarter decision-making and long-term scalability.',
   images: [
-    '/images/results-1.png',
-    '/images/results-2.png',
+    '/ResultsDevelopment.png',
   ],
 };

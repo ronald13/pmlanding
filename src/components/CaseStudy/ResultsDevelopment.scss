@@ -13,61 +13,14 @@
     gap: 4rem;
     align-items: start;
   }
-
-  // Slider (Left)
-  &__slider {
-    position: sticky;
-    top: calc($header-height + 2rem);
+  &__image{
+    max-width: 100%;
+    img{
+      width: 100%;
+    };
   }
 
-  &__slider-wrapper {
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
-  }
 
-  &__image-placeholder {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    background: linear-gradient(135deg, $bg-light 0%, $bg-purple 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    span {
-      color: $text-gray;
-      font-weight: 500;
-      font-size: 1rem;
-    }
-  }
-
-  &__controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  &__nav-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 0.5rem;
-    border: 1px solid $border-gray;
-    background: $white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all $transition-fast;
-    color: $text-dark;
-
-    &:hover {
-      border-color: $primary-blue;
-      color: $primary-blue;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(107, 127, 238, 0.2);
-    }
-  }
 
   // Content (Right)
   &__content {
@@ -121,6 +74,8 @@
   &__check {
     flex-shrink: 0;
     margin-top: 0.125rem;
+    width: 24px;
+    height: 24px;
   }
 
   &__ongoing {

@@ -10,7 +10,10 @@ export const monitoringData = {
     'Release coordination and CI/CD alignment',
   ],
   images: [
-    '/images/monitoring-1.png',
-    '/images/monitoring-2.png',
+    '/ExecutionMonitoring_1.png',
+    '/ExecutionMonitoring_2.png',
+    '/ExecutionMonitoring_3.png',
+    '/ExecutionMonitoring_4.png',
+
   ],
 };
