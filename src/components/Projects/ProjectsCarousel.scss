@@ -1,0 +1,124 @@
+@import '../../styles/variables';
+
+.projects-carousel {
+  padding: 5rem 0;
+  background: $white;
+  overflow: hidden;
+
+  &__container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    gap: 2rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text-dark;
+    margin: 0 0 0.5rem 0;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: $text-gray;
+    margin: 0;
+  }
+
+  &__controls {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  &__arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    border: 1px solid $border-gray;
+    background: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all $transition-fast;
+    color: $text-dark;
+
+    &:hover:not(:disabled) {
+      border-color: $primary-blue;
+      color: $primary-blue;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(107, 127, 238, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  // Carousel Track
+  &__track {
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+  &__slides {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  &__slide {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 0;
+  }
+
+  // Progress
+  &__progress {
+    text-align: center;
+  }
+
+  &__progress-text {
+    font-size: 0.9375rem;
+    color: $text-gray;
+  }
+
+  // Responsive
+  @media (max-width: $breakpoint-tablet) {
+    &__slide {
+      flex: 0 0 calc(50% - 0.75rem);
+    }
+
+    &__header {
+      flex-direction: column;
+    }
+
+    &__controls {
+      align-self: flex-end;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 3rem 0;
+
+    &__slide {
+      flex: 0 0 100%;
+    }
+
+    &__title {
+      font-size: 1.75rem;
+    }
+
+    &__header {
+      margin-bottom: 2rem;
+    }
+  }
+}
