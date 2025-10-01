@@ -2,19 +2,27 @@ import React, { useState } from 'react';
 import './StageSection.scss';
 
 const StageSection = ({ data, isDark = false }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentPairIndex, setCurrentPairIndex] = useState(0);
+
+  // Группируем изображения попарно
+  const imagePairs = [];
+  for (let i = 0; i < data.images.length; i += 2) {
+    imagePairs.push(data.images.slice(i, i + 2));
+  }
 
   const handlePrevImage = () => {
-    setCurrentImageIndex((prev) =>
-      prev === 0 ? data.images.length - 1 : prev - 1
+    setCurrentPairIndex((prev) =>
+      prev === 0 ? imagePairs.length - 1 : prev - 1
     );
   };
 
   const handleNextImage = () => {
-    setCurrentImageIndex((prev) =>
-      prev === data.images.length - 1 ? 0 : prev + 1
+    setCurrentPairIndex((prev) =>
+      prev === imagePairs.length - 1 ? 0 : prev + 1
     );
   };
+
+  const currentPair = imagePairs[currentPairIndex] || [];
 
   return (
     <section className={`stage-section ${isDark ? 'stage-section--dark' : ''}`}>
@@ -27,35 +35,45 @@ const StageSection = ({ data, isDark = false }) => {
           <p className="stage-section__description">{data.description}</p>
         </div>
 
-        {/* Slider */}
+        {/* Slider with 2 images */}
         <div className="stage-section__slider">
-          <div className="stage-section__image-placeholder">
-            <span>{data.title} - Slide {currentImageIndex + 1}</span>
+          <div className="stage-section__slider-grid">
+            {currentPair.map((image, index) => (
+              <div key={index} className="stage-section__slider-item">
+                <img
+                  src={image}
+                  alt={`${data.title} - Image ${currentPairIndex * 2 + index + 1}`}
+                  className="stage-section__image"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Navigation Controls */}
-        <div className="stage-section__controls">
-          <button
-            className="stage-section__nav-btn stage-section__nav-btn--prev"
-            onClick={handlePrevImage}
-            aria-label="Previous slide"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+        {imagePairs.length > 1 && (
+          <div className="stage-section__controls">
+            <button
+              className="stage-section__nav-btn stage-section__nav-btn--prev"
+              onClick={handlePrevImage}
+              aria-label="Previous slides"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
 
-          <button
-            className="stage-section__nav-btn stage-section__nav-btn--next"
-            onClick={handleNextImage}
-            aria-label="Next slide"
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
+            <button
+              className="stage-section__nav-btn stage-section__nav-btn--next"
+              onClick={handleNextImage}
+              aria-label="Next slides"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        )}
 
         {/* Key Results */}
         {data.keyResults && (

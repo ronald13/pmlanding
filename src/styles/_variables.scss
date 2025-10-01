@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Colors
 $primary-blue: #6B7FEE;
 $accent-green: #7FD957;
@@ -11,11 +13,11 @@ $border-gray: #e5e7eb;
 
 // Typography
 $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
 // Spacing
 $container-max-width: 1200px;
-$header-height: 280px;
+$header-height: 80px;
 
 // Breakpoints
 $breakpoint-mobile: 768px;
@@ -28,3 +30,12 @@ $transition-normal: 0.3s;
 // Shadows
 $shadow-sm: 0 2px 4px rgba(107, 127, 238, 0.2);
 $shadow-md: 0 4px 8px rgba(107, 127, 238, 0.3);
+
+// Helper functions (современный синтаксис)
+@function lighten-color($color, $amount) {
+  @return color.adjust($color, $lightness: $amount);
+}
+
+@function darken-color($color, $amount) {
+  @return color.adjust($color, $lightness: -$amount);
+}

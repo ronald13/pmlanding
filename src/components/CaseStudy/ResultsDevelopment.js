@@ -17,7 +17,7 @@ const ResultsDevelopment = ({ data }) => {
   };
 
   return (
-    <section className="results-development">
+    <section id="result" className="results-development">
       <div className="results-development__container">
 
         {/* Left Slider */}

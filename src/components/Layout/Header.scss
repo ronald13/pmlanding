@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .header {
   position: fixed;
@@ -46,7 +46,7 @@
     gap: 2rem;
     align-items: center;
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: $breakpoint-tablet) {
       display: none;
     }
   }
@@ -56,6 +56,9 @@
     font-size: 1rem;
     font-weight: 500;
     transition: color $transition-fast;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
 
     &:hover {
       color: $text-dark;
@@ -64,6 +67,18 @@
     &--active {
       color: $primary-blue;
     }
+
+    &--download {
+      &:hover {
+        .header__external-icon {
+          transform: translate(2px, -2px);
+        }
+      }
+    }
+  }
+
+  &__external-icon {
+    transition: transform $transition-fast;
   }
 
   &__contact-btn {
@@ -77,7 +92,7 @@
     box-shadow: $shadow-sm;
 
     &:hover {
-      background: darken($primary-blue, 8%);
+      background: darken-color($primary-blue, 8%);
       transform: translateY(-1px);
       box-shadow: $shadow-md;
     }
@@ -90,6 +105,11 @@
   @media (max-width: $breakpoint-mobile) {
     &__container {
       padding: 0 1rem;
+    }
+
+    &__contact-btn {
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
     }
   }
 }

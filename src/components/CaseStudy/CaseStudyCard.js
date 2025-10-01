@@ -5,7 +5,7 @@ import './CaseStudyCard.scss';
 
 const CaseStudyCard = () => {
   return (
-    <section className="case-study">
+    <section id="case-study" className="case-study">
       <div className="case-study__container">
 
         {/* Left Content */}

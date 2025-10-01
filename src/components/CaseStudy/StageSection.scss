@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .stage-section {
   padding: 5rem 0;
@@ -9,7 +9,7 @@
     color: $white;
 
     .stage-section__label {
-      color: lighten($primary-blue, 20%);
+      color: lighten-color($primary-blue, 20%);
     }
 
     .stage-section__title,
@@ -74,28 +74,31 @@
     margin: 0;
   }
 
-  // Slider
+  // Slider with 2 images
   &__slider {
     margin: 0 auto 2rem;
     max-width: 1000px;
+  }
+
+  &__slider-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  &__slider-item {
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: $bg-light;
   }
 
-  &__image-placeholder {
+  &__image {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, $bg-light 0%, $bg-purple 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    span {
-      color: $text-gray;
-      font-weight: 500;
-      font-size: 1.125rem;
-    }
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
   }
 
   // Navigation Controls (below slider)
@@ -164,8 +167,6 @@
   &__check {
     flex-shrink: 0;
     margin-top: 0.125rem;
-    width: 24px;
-    height: 24px;
   }
 
   // Ongoing Development
@@ -200,6 +201,11 @@
 
     &__header {
       margin-bottom: 2rem;
+    }
+
+    &__slider-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
   }
 

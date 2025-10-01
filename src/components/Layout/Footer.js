@@ -1,30 +1,81 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'gatsby';
 import './Footer.scss';
 
 const Footer = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const titleRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <footer className="footer">
+    <footer id="contacts" className="footer">
       <div className="footer__container">
 
-        {/* Left Section */}
-        <div className="footer__left">
-          {/* Logo */}
-          <Link to="/" className="footer__logo">
-            <span className="footer__logo-icon">🟢</span>
-            <span className="footer__logo-text">A.PM</span>
-          </Link>
+        {/* Animated Title */}
+        <h2
+          ref={titleRef}
+          className={`footer__title ${isVisible ? 'footer__title--visible' : ''}`}
+        >
+          Let's connect
+        </h2>
 
-          {/* Pages */}
-          <div className="footer__pages">
-            <h3 className="footer__pages-title">PAGES</h3>
-            <nav className="footer__nav">
-              <Link to="/" className="footer__link">Home</Link>
-            </nav>
+        {/* Bottom Content */}
+        <div className="footer__bottom">
+          {/* Left Section */}
+          <div className="footer__left">
+            <Link to="/" className="footer__logo">
+              <span className="footer__logo-icon">🟢</span>
+              <span className="footer__logo-text">A.PM</span>
+            </Link>
+
+            <div className="footer__pages">
+              <h3 className="footer__pages-title">PAGES</h3>
+              <nav className="footer__nav">
+                <a
+                  href="#home"
+                  className="footer__link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Home
+                </a>
+                <a
+                  href="/cv/Anna_Ihnatsiuk_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer__link footer__link--download"
+                >
+                  Download CV
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="footer__external-icon">
+                    <path d="M12 4L4 12M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </a>
+              </nav>
+            </div>
           </div>
 
-          {/* Contact Info */}
-          <div className="footer__contact-info">
+          {/* Center Section */}
+          <div className="footer__center">
             <a href="mailto:annaprigon@gmail.com" className="footer__email">
               annaprigon@gmail.com
             </a>
@@ -40,22 +91,17 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-        </div>
 
-        {/* Center - Let's Connect Image */}
-        <div className="footer__center">
-          <img src="/lets_connect.svg" alt="Let's connect" className="footer__connect-image" />
-        </div>
+          {/* Right Section */}
+          <div className="footer__right">
+            <p className="footer__note">
+              NOTE! All project screenshots are for illustrative purposes only and do not represent actual company documentation.
+            </p>
 
-        {/* Right Section */}
-        <div className="footer__right">
-          <p className="footer__note">
-            NOTE! All project screenshots are for illustrative purposes only and do not represent actual company documentation.
-          </p>
-
-          <p className="footer__copyright">
-            © Made by Anna I. All Rights reserved
-          </p>
+            <p className="footer__copyright">
+              © Made by Anna I. All Rights reserved
+            </p>
+          </div>
         </div>
 
       </div>

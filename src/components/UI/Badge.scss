@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as *;
 
 .badge {
   display: inline-block;
@@ -17,7 +17,7 @@
   }
 
   &--tool {
-    background: lighten($bg-purple, 5%);
+    background: lighten-color($bg-purple, 5%);
     color: $text-gray;
   }
 }
