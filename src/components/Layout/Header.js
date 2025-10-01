@@ -77,7 +77,7 @@ const Header = () => {
           className="header__contact-btn"
           onClick={(e) => scrollToSection(e, 'contacts')}
         >
-          Contact
+          Get in Touch
         </a>
       </div>
     </header>

@@ -12,11 +12,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        cssLoaderOptions: {
-          esModule: false,
-          modules: {
-            namedExport: false,
-          },
+        implementation: require('sass'),
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api'], // временно отключает предупреждения
         },
       },
     },
