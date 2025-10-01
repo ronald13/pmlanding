@@ -99,7 +99,7 @@ const Footer = () => {
             </p>
 
             <p className="footer__copyright">
-              © Made by Anna I. All Rights reserved
+              © Made by Anna I. All Rights reserved.
             </p>
           </div>
         </div>
