@@ -14,8 +14,7 @@
 
   // Animated Title
   &__title {
-    font-size: 4rem;
-    font-weight: 700;
+//     font-size: 4rem;
     text-align: center;
     margin: 0 0 6rem 0;
     opacity: 0;
@@ -27,13 +26,16 @@
       transform: translateY(0);
     }
   }
+&__img{
+    width:470px;
+    }
 
   // Bottom Section
   &__bottom {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: 4rem;
-    align-items: start;
+    align-items: end;
   }
 
   // Left Section
@@ -64,6 +66,7 @@
 
   &__logo-text {
     letter-spacing: -0.02em;
+    margin-left:-21px
   }
 
   &__pages {

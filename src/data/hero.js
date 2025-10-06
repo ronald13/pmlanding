@@ -11,8 +11,8 @@ export const heroData = {
     },
     {
       icon: 'linkedin',
-      text: '/hannaiihnatsiuk',
-      link: 'https://linkedin.com/in/hannaiihnatsiuk',
+      text: '/hanna-ihnatsiuk',
+      link: 'https://linkedin.com/in/hanna-ihnatsiuk',
     },
     {
       icon: 'email',

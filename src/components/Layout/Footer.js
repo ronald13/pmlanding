@@ -30,12 +30,12 @@ const Footer = () => {
       <div className="footer__container">
 
         {/* Animated Title */}
-        <h2
-          ref={titleRef}
-          className={`footer__title ${isVisible ? 'footer__title--visible' : ''}`}
+        <div
+         ref={titleRef}
+         className={`footer__title ${isVisible ? 'footer__title--visible' : ''}`}
         >
-          Let's connect
-        </h2>
+            <img src="/lets_connect.svg" alt="Let's connect" className="footer__img" />
+        </div>
 
         {/* Bottom Content */}
         <div className="footer__bottom">
@@ -81,7 +81,7 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://linkedin.com/in/hannaiihnatsiuk"
+              href="https://linkedin.com/in/hanna-ihnatsiuk"
               target="_blank"
               rel="noopener noreferrer"
               className="footer__social-icon"

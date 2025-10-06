@@ -1,16 +1,24 @@
 import React from 'react';
 import { heroData } from '../../data/hero';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import './HeroSection.scss';
 
 const HeroSection = () => {
+  const [tagsRef, tagsVisible] = useScrollAnimation({ once: true });
+  const [nameRef, nameVisible] = useScrollAnimation({ once: true, threshold: 0.2 });
+  const [descRef, descVisible] = useScrollAnimation({ once: true, threshold: 0.2 });
+  const [imageRef, imageVisible] = useScrollAnimation({ once: true, threshold: 0.1 });
+
+
   return (
     <section id="home" className="hero">
       <div className="hero__container">
 
-        {/* Left Content */}
         <div className="hero__content">
-          {/* Tags */}
-          <div className="hero__tags">
+          <div
+            ref={tagsRef}
+            className={`hero__tags animate-on-scroll animate-on-scroll--fade-in ${tagsVisible ? 'is-visible' : ''}`}
+          >
             {heroData.tags.map((tag, index) => (
               <React.Fragment key={index}>
                 <span className="hero__tag">{tag}</span>
@@ -19,19 +27,30 @@ const HeroSection = () => {
             ))}
           </div>
 
-          {/* Name & Title */}
-          <h1 className="hero__name">{heroData.name}</h1>
-          <h2 className="hero__title">{heroData.title}</h2>
+          <div ref={nameRef}>
+            <h1 className={`hero__name animate-on-scroll animate-on-scroll--fade-in-up ${nameVisible ? 'is-visible' : ''}`}>
+              {heroData.name}
+            </h1>
+            <h2 className={`hero__title animate-on-scroll animate-on-scroll--fade-in-up animate-delay-1 ${nameVisible ? 'is-visible' : ''}`}>
+              {heroData.title}
+            </h2>
+          </div>
 
-          {/* Description */}
-          <p className="hero__description">{heroData.description}</p>
+          <p
+            ref={descRef}
+            className={`hero__description animate-on-scroll animate-on-scroll--fade-in-up ${descVisible ? 'is-visible' : ''}`}
+          >
+            {heroData.description}
+          </p>
 
-          {/* Contact Info */}
           <div className="hero__contacts">
             {heroData.contacts.map((contact, index) => (
-              <div key={index} className="hero__contact">
+              <div
+                key={index}
+                className={`hero__contact animate-on-scroll animate-on-scroll--fade-in-left animate-delay-${index + 1} ${descVisible ? 'is-visible' : ''}`}
+              >
                 <div className={`hero__contact-icon hero__contact-icon--${contact.icon}`}>
-                  {contact.icon === 'location' && (
+                 {contact.icon === 'location' && (
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                       <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="white" strokeWidth="2"/>
                       <path d="M12 22C12 22 20 16 20 10C20 5.58172 16.4183 2 12 2C7.58172 2 4 5.58172 4 10C4 16 12 22 12 22Z" stroke="white" strokeWidth="2"/>
@@ -61,9 +80,11 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Right Image */}
-        <div className="hero__visual">
-          <img src="/home_img.svg" alt="Project Management Infographic" className="hero__image" />
+        <div
+          ref={imageRef}
+          className={`hero__visual animate-on-scroll animate-on-scroll--fade-in-right ${imageVisible ? 'is-visible' : ''}`}
+        >
+          <img src="/home_image.svg" alt="Project Management Infographic" className="hero__image" />
         </div>
 
       </div>
